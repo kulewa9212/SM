@@ -1,0 +1,244 @@
+\documentclass[12pt,a4paper,oneside,titlepage]{article}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{sidecap}
+\usepackage{wrapfig}
+\usepackage{subfig}
+\usepackage{geometry}
+\usepackage{color}
+\newgeometry{tmargin=2.0cm, bmargin=2.0cm, lmargin=2cm, rmargin=2.0cm}
+\usepackage{ifthen}
+\usepackage[hidelinks]{hyperref}
+\usepackage{nameref}
+\usepackage{natbib}
+\linespread{1.5}
+
+\makeatletter
+\let\orgdescriptionlabel\descriptionlabel
+\renewcommand*{\descriptionlabel}[1]{%
+  \let\orglabel\label
+  \let\label\@gobble
+  \phantomsection
+  \edef\@currentlabel{#1}%
+  %\edef\@currentlabelname{#1}%
+  \let\label\orglabel
+  \orgdescriptionlabel{#1}%
+}
+\makeatother
+
+\newtheorem{Twierdzenie}{Twierdzenie}
+\newtheorem{Def}{Definicja}
+\newtheorem{Lemat}{Lemat}
+\newtheorem{Problem}{Problem}
+\newtheorem{Uwaga}[Twierdzenie]{Uwaga}
+\newtheorem{Wniosek}{Wniosek}
+\DeclareMathOperator*{\esssup}{ess\,sup}
+
+\newcommand{\setR}{\mathbb{R}}
+\newcommand{\Nset}{\mathbb{N}}	
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\M}{\mathbb{M}}
+\renewcommand{\epsilon}{\varepsilon}
+
+\newcommand{\function}[2]{{#1} \left( {#2} \right)}
+\newcommand{\bracket}[1]{\left( {#1} \right)}
+\newcommand{\set}[1]{\left\lbrace {#1} \right\rbrace} 
+\newcommand{\abs}[1]{\left| {#1} \right|} 				
+\newcommand{\dt}[1][t]{\,\mathrm{d}{#1}}				
+\newcommand{\essinf}{\operatorname{essinf}\limits}
+
+\newcommand{\norm}[2][]{ \left\| {#2} \right\|_{#1}}
+\newcommand{\dual}[3][]{ \left\langle {#2} ; {#3} \right\rangle_{ {#1}}}
+\newcommand{\distance}[3][d]{ \operatorname{{#1}}\left( {#2} ; {#3} \right)}
+\newcommand{\sequence}[3]{\left( {#1} \right)_{#2}^{#3} }
+\newcommand{\dualSpace}[1]{{#1}^\ast}
+\newcommand{\Ck}[2][]{\operatorname{C}^{#1} \ifthenelse{\equal{#2}{}}{}{\left( {#2} \right)}}
+\newcommand{\Lp}[2][p]{\operatorname{L}^{#1}\ifthenelse{ \equal{#2}{} }{}{\left( {#2} \right)}}
+\newcommand{\Wppz}[3]{\operatorname{W}^{ {#1},{#2}}_{0} \ifthenelse{ \equal{#3}{} }{}{\left( {#3} \right)}}
+\newcommand{\Wpp}[3]{\operatorname{W}^{ {#1},{#2}} \ifthenelse{ \equal{#3}{} }{}{\left( {#3} \right)} }
+\newcommand{\Hpz}[2]{\operatorname{H}^{{#1}}_{0} \ifthenelse{ \equal{#2}{} }{}{\left( {#2} \right)}}
+
+\newcommand{\pLaplace}{\Delta_p}
+\newcommand{\boundary}{\partial}
+\newcommand{\cut}[2]{ \left. {#1} \right|_{#2} }
+\newcommand{\weakto}{\rightharpoonup}
+
+%\begin{figure}[!h]
+%\centering
+%\includegraphics[width=13cm]
+%\end{figure}
+\begin{document}
+
+\section{Wstęp}
+
+W matematyce często rozważamy problemy następującej postaci
+\begin{equation}
+\label{P1}
+Au = 0,
+\end{equation}
+gdzie $A:X \rightarrow  Y$jest odwzorowaniem pomiędzy przestrzeniami Banacha $X,~Y$. Jeśli problem ma naturę wariacyjną, istnieje funkcjonał $\phi : X \rightarrow \mathbb{R}$, który jest słabą pochodną odwzorowania $A$. Dzięki temu, szukanie rozwiązań problemu (\ref{P1}) sprowadza się często do wyznaczenia kresu dolnego wprowadzonego funkcjonału $\phi$. Przy takich problemach z pomocą często przychodzą takie rezultaty jak twierdzenie o przełęczy górskiej, warunek Palais-Smale czy zasada Edekelanda. Takie podejście może być użyte m.in. przy rozważaniu problemu Dirichleta, w którym występuje operator Laplace'a. Innnym sposobem jest wykazanie istnienie rozwiązań tego problemu wykorzystując lemat Maxa-Milgramma. W kolejnych rozdziałach tej pracy wprowadzimy pojęcie słabej pochodnej oraz jej podstawowe własności i przykłady. Następnie rozważymy problem Dirichleta za pomocą wprowadzonego wcześniej lematu Maxa-Milgramma.
+\section{Słaba pochodna}
+\begin{Def}
+Niech $u, v \in L^{1}(U)$, gdzie $U \subset \mathbb{R}^{n}$ jest zbiorem otwartym oraz $\alpha = (\alpha_1, ..., \alpha_k)$ będzie multiindeksem oraz $\vert \alpha \vert = \alpha_1 + ... + \alpha_k$, $k \in \mathbb{N}$. Mówimy, że $v$ jest słabą pochodną $u$ oznaczaną przez
+\begin{equation}
+D^{\alpha} u =v,
+\end{equation}
+ jeśli 
+\begin{equation}
+\int_{U} u D^{\alpha}\psi dx = (-1)^{\vert \alpha \vert} \int_{U} v \psi dx
+\end{equation} 
+dla każdej funkcji $\psi \in C^{\infty}_{c}(U)$.
+\end{Def}
+
+\textbf{Przykład.1.1.}
+Rozważymy funkcję 
+\begin{center}
+$
+u (x)  = \left\{ \begin{array}{ll}
+x, & \textrm{for $x \in (0,1]$}\\
+1, & \textrm{for $ t \in (1, 2) $} \\
+\end{array} \right.
+$ .
+\end{center}
+Sprawdzimy, iż słabą pochodną funkcji $u$ jest następująca funkcja
+\begin{center}
+$
+v (x)  = \left\{ \begin{array}{ll}
+1, & \textrm{for $x \in (0,1]$}\\
+0, & \textrm{for $ t \in (1, 2) $} \\
+\end{array} \right.
+$ .
+\end{center}
+\newpage
+Istotnie,
+\begin{equation}
+\nonumber
+\int_0^2 u D\psi dx = \int_0^1 x D\psi dx + \int_1^2 D \psi dx = - \int_0^2 v \psi dx . \\
+\end{equation}
+\bigskip
+
+Pojęcie słabej pochodnej umożliwia nam rozważanie rezultatów wynikających m.in. ze wzoru na całkowanie przez części oraz pochodną iloczynu również dla funkcji, które niekoniecznie są $k-$krotnie różniczkowalne oraz wprowadzenie przestrzeni Sobolewa i pewnych własności zdefiniowanej powyżej słabej pochodnej.
+
+\begin{Def} Mówimy, że funkcja $u \in L^{p}(U)$ należy do przestrzeni Sobolewa $W^{k,p}(U)$ jeśli dla każdego multiindeksu $\alpha$ takiego, że $\vert \alpha \vert \leq k$, słaba pochodna $D^{\alpha}u$ istnieje oraz należy do przestrzeni $L^{p}(U)$.
+\end{Def}
+
+\begin{Def} (\textbf{Norma w przestrzeni Sobolewa}) \\  Jeśli $u \in W^{k,p}(U)$, definiujemy normę w przestrzeni Sobolewa następujący sposób
+\begin{center}
+$
+\Vert u \Vert_{W^{k,p}(u)}  = \left\{ \begin{array}{ll}
+ \left( \sum_{\vert \alpha \vert \leq k } \int_{U} \vert D^{\alpha} u \vert^{p} dx\right)^{\frac{1}{p}}, & \textrm{dla $p \in [1,\infty)$}\\
+\sum_{\vert \alpha \vert \leq k} \esssup_{U} \vert D^{\alpha} u \vert, & \textrm{dla $ p = \infty $} \\
+\end{array} \right.
+$ .
+\end{center}
+\end{Def}
+
+\begin{Twierdzenie} \textbf{(Własności słabej pochodnej)} \\ Niech $u,v \in W^{k,p}(U)$ oraz $\vert \alpha \vert < k$. Wówczas
+\begin{itemize}
+\item[(a)] $D^{\alpha} u \in W^{k-\vert \alpha \vert,p}(U)$ oraz $D^{\beta}\left( D^{\alpha} u \right) = D^{\alpha}\left( D^{\beta} u \right)= D^{\alpha+\beta}u$ dla dowolnych multiindesków $\alpha, \beta$ takich, że $\vert \alpha \vert + \vert \beta \vert \leq k$.
+\item[(b)] Dla dowolnych $\alpha_1, \alpha_2 \in \mathbb{R}$ zachodzi
+\begin{equation}
+\nonumber
+\alpha_1 u +\alpha_2 v \in W^{k,p}(U)
+\end{equation}
+oraz
+\begin{equation}
+\nonumber
+D^{\alpha}(\alpha_1 u + \alpha_2 v) = \alpha_1 D^{\alpha}u + \alpha_2 D^{\alpha} v .
+\end{equation}
+\item[(c)] Jeśli $V \subset U$ jest zbiorem otwartym, to $u \in W^{k,p}(V)$.
+\end{itemize}
+\begin{proof}
+Rozpoczynamy od wykazania tezy $(a)$. Niech $\beta$ będzie multiindeksem takim, że $\vert \alpha \vert + \vert \beta \vert \leq k$, $k \in \mathbb{N}$. Istotnie,
+\begin{equation}
+\nonumber
+\begin{split}
+\int_{U} D^{\alpha} u D^{\beta} \psi dx = (-1)^{\vert \alpha \vert} \int_{U} u D^{\alpha + \beta} \psi
+ dx  = (-1)^{\vert \alpha \vert} (-1)^{\vert \alpha + \beta \vert} \int_{U} D^{\alpha + \beta} u \psi dx = \\ (-1)^{\beta + 2 \alpha}  \int_{U} D^{\alpha + \beta} u \psi dx = (-1)^{\vert \beta \vert}  \int_{U} D^{\alpha + \beta} u \psi dx .
+ \end{split}
+\end{equation}
+Otrzymaliśmy, że
+\begin{equation}
+\nonumber
+\int_{U} D^{\alpha} u D^{\beta} \psi dx = (-1)^{\vert \beta \vert}  \int_{U} D^{\alpha + \beta} u \psi dx .
+\end{equation}
+Stąd otrzymujemy następujący wniosek dla słabej pochodnej
+\begin{equation}
+\nonumber
+D^{\beta} \left( D^{\alpha} u \right) = D^{\alpha+\beta}u .
+\end{equation}
+W analogiczny sposób możemy pokazać, że
+\begin{equation}
+\nonumber
+D^{\alpha} \left( D^{\beta} u \right) = D^{\alpha+\beta}u .
+\end{equation}
+Stąd
+\begin{equation}
+\nonumber
+D^{\beta} \left( D^{\alpha} u \right) = D^{\alpha} \left( D^{\beta} u \right) = D^{\alpha+\beta}u .
+\end{equation}
+Przechodzimy teraz do wykazania tezy (b). Rozważmy
+\begin{equation}
+\nonumber
+\begin{split}
+\int_{U} \left( \alpha_1 u + \alpha_2 v \right) D^{\alpha}\psi dx = \alpha_1 \int_{U} u D^{\alpha} \psi dx + \alpha_2 \int_{U}  v D^{\alpha} \psi dx \\ = \alpha_1 (-1)^{\vert \alpha \vert} \int_{U} \psi D^{\alpha} u  dx + \alpha_2 (-1)^{\vert \alpha \vert} \int_{U} \psi D^{\alpha} v  dx \\ =  (-1)^{\vert \alpha \vert} \int_{U} \left( \alpha_1 D^{\alpha} u + \alpha_2 D^{\alpha} v \right) \psi dx .
+\end{split}
+\end{equation}
+Zatem
+\begin{equation}
+\nonumber
+D^{\alpha}(\alpha_1 u + \alpha_2 v) = \alpha_1 D^{\alpha}u + \alpha_2 D^{\alpha} v 
+\end{equation}
+oraz
+\begin{equation}
+\nonumber
+\alpha_1 u +\alpha_2 v \in W^{k,p}(U) .
+\end{equation}
+Aby wykazać tezę $(c)$ korzystamy z własności całki. Skoro $V$ jest podzbiorem $U$, to dostajemy
+\begin{equation}
+\nonumber
+\int_{V} \vert D^{\alpha} u \vert^{p} dx \leq \int_{U} \vert D^{\alpha} u \vert^{p} dx < \infty .
+\end{equation}
+Stąd
+\begin{equation}
+\nonumber
+u \in W^{k,p}(V) .
+\end{equation}
+\end{proof}
+\end{Twierdzenie}
+\newpage
+\section{Lemat Maxa-Milgramma}
+\begin{Lemat} fhjkdfkdssfhs
+\end{Lemat}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
