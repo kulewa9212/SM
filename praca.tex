@@ -3,13 +3,13 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amsfonts}
+\usepackage{geometry}
 \usepackage{polski}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{sidecap}
 \usepackage{wrapfig}
 \usepackage{subfig}
-\usepackage{geometry}
 \usepackage{color}
 \newgeometry{tmargin=2.0cm, bmargin=2.0cm, lmargin=2cm, rmargin=2.0cm}
 \usepackage{ifthen}
@@ -215,18 +215,81 @@ u \in W^{k,p}(V) .
 \end{Twierdzenie}
 \newpage
 \section{Lemat Maxa-Milgramma}
-\begin{Lemat} fhjkdfkdssfhs
+\begin{Lemat} DO UZUPEŁNIENIA
 \end{Lemat}
-
-
-
-
-
-
-
-
-
-
+\section{Zagadnienie Dirichleta}
+W tej części pracy wykażemy istnienie rozwiązania zagadnienia Dirichleta. Jak wcześniej zostało to już zaznaczone, dokonamy tego wykorzystując Lemat Maxa-Milgramma. \\ \\
+\indent
+Niech $\Omega \subset R^{n}$, $n \in \mathbb{N}$ będzie zbiorem otwartym i ograniczonym, $u \in C^{2}(\Omega) \cap C(\overline{\Omega})$ oraz $f \in C(\Omega)$. 
+Rozważmy problem
+\begin{center}
+\label{ProblemP}
+$
+ \left\{ \begin{array}{ll}
+- \Delta u(x) = f(x), & \textrm{dla $ x \in \Omega$}\\
+~~~u(x)=0, & \textrm{dla $ x \in \partial \Omega $} \\
+\end{array} \right.
+$ ,
+\end{center}
+gdzie $\Delta$ jest operatorem Laplace'a. \\
+Zauważmy, że dla dowolnej funkcji $v \in C^{\infty}_0 (\Omega)$ dostajemy
+\begin{equation}
+\nonumber
+\int_{\Omega} (-\Delta u ) v dx = \int_{\Omega} f v dx .
+\end{equation}
+Zatem
+\begin{equation}
+\nonumber
+- \int_{\Omega} \sum_{i=1}^n \frac{\partial^2 u}{\partial x_i^2} v dx = \int_{U} f v dx .
+\end{equation}
+Korzystając z definicji słabej pochodnej dostajemy, że 
+\begin{equation}
+\nonumber
+\begin{split}
+- \int_{\Omega} \sum_{i=1}^n \frac{\partial^2 u}{\partial x_i^2} v dx = - \sum_{i=1}^n \int_{\Omega} \frac{\partial}{\partial x_i} \left( \frac{\partial u}{\partial x_i} \right) v dx = \int_{\Omega} \sum_{i=1}^n \frac{\partial u}{\partial x_i} \frac{\partial v}{\partial x _i}.
+\end{split}
+\end{equation}
+Stąd
+\begin{equation}
+\nonumber
+\int_{\Omega} \Delta u \Delta v dx = \int_{\Omega} f v dx.
+\end{equation}
+Dodatkowo zakładamy, że $f \in L^{2}(\Omega), \Delta u, \Delta v \in L^{2}(\Omega, R^n).$
+Oznaczmy teraz przez $W^{1,2}_0(\Omega)$ domknięcie zbioru $C^1_c(\Omega) $ w $W^{1,2}(\Omega)$. \\
+\indent
+Otrzymujemy wówczas problem znalezienia $u \in W^{1,2}_0(\Omega)$ takiego, że
+\begin{equation}
+\int_{\Omega} \Delta u \Delta v dx = \int_{\Omega} f v dx
+\end{equation}
+dla każdego $v \in W^{1,2}_0 (\Omega)$. \\
+\medskip
+Zdefiniujmy teraz odwzorowanie $B:W^{1,2}_0(\Omega) \times W^{1,2}_0(\Omega) \rightarrow \mathbb{R} $
+\begin{equation}
+\nonumber
+B(u,v) = \int_{\Omega} \Delta u \Delta v dx
+\end{equation}
+oraz $l: W^{1,2}_0(\Omega) \rightarrow \mathbb{R}$ 
+\begin{equation}
+\nonumber
+l(v) = \int_{\Omega} f v dx .
+\end{equation}
+Zauważmy, iż odwzorowanie $B:W^{1,2}_0(\Omega) \times W^{1,2}_0(\Omega) \rightarrow \mathbb{R} $ jest dwuliniowe oraz (na moce nierówności Höldera i Poincare) spełnia nierówności
+\begin{equation}
+\nonumber
+\vert B(u,v) \vert = \left\vert \int_{\Omega} \Delta u \Delta v dx \right\vert \leq \Vert \Delta u \Vert^2_{L^2(\Omega,R^n)} \cdot \Vert \Delta v \Vert^2_{L^2(\Omega,R^n)} \leq \Vert u \Vert^2_{W^{1,2}_0 (\Omega)} \cdot \Vert v \Vert^2_{W^{1,2}_0 (\Omega)} \cdot 
+\end{equation}
+oraz
+\begin{equation}
+\nonumber
+B(u,u) = \int_{\Omega} \vert \Delta u \vert^2 dx = \Vert \Delta u \Vert^2_{L^2(\Omega,R^n)} \geq c \Vert u \Vert_{W^{1,2}_0(\Omega)},
+\end{equation}
+gdzie $c \in \mathbb{R}$. \\
+Ponadto, $l: W^{1,2}_0(\Omega) \rightarrow \mathbb{R}$ jest liniowe i ciągłe, gdyż
+\begin{equation}
+\nonumber
+\vert l(v) \vert = \left\vert \int_{\Omega} f v dx \right\vert \leq \Vert f \Vert_{L^2(\Omega)} \cdot \Vert v \Vert_{L^2(\Omega)} \leq \widetilde{c} \Vert v \Vert_{W^{1,2}_0 (\Omega)},
+\end{equation}
+gdzie $\widetilde{c} \in \mathbb{R}$. Na mocy lematu Maxa-Milgramma otrzymujemy istnienie jednoznacznego rozwiązania rozważanego problemu.
 
 
 
