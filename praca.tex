@@ -215,8 +215,103 @@ u \in W^{k,p}(V) .
 \end{Twierdzenie}
 \newpage
 \section{Lemat Maxa-Milgramma}
-\begin{Lemat} DO UZUPEŁNIENIA
+\begin{Lemat}  \label{l1}
+Niech $H$ będzie przestrzenią Hilberta oraz $B: H \times H \rightarrow \mathbb{R}$ będzie odwzorowaniem dwuliniowym takim, że istnieją liczby $\alpha, \beta>0 $ spełniające warunek
+\begin{equation} \label{N1}
+\vert B(u,v) \vert \leq \alpha \cdot \Vert u \Vert_{H} \cdot \Vert v \Vert_H \textbf{   (ciągłość)}
+\end{equation}
+oraz
+\begin{equation}
+\beta \cdot \Vert u \Vert_H^2 \leq B(u,u) \textbf{  (koercywność)}
+\end{equation}
+dla dowolnych $u,v \in H$. Jeśli $f:H \rightarrow \mathbb{R}$ jest liniowym, ograniczonym funkcjonałem, to wówczas istnieje dokładnie jedno $u \in H$ takie, że
+\begin{equation}
+\nonumber
+B(u,v) = f(v()
+\end{equation}
+dla każdego $v \in H$.
+\begin{proof}
+Rozpoczynamy od przypomnienia twierdzeniu Riesza o reprezentacji, które zostanie wykorzystane w dowodzie lematu \ref{l1}. 
+
+\begin{Twierdzenie} \label{TR}
+Dla każdego elementu przestrzeni dualnej $u^* \in H^*$, gdzie $H-$ przestrzeń Hilberta, istnieje dokładnie jedno $u \in H$ takie, że
+\begin{equation}
+\nonumber
+u^* (v) = <u,v>
+\end{equation}
+dla każdego $v \in H$, gdzie $<\cdot, \cdot >:H \times H \rightarrow \mathbb{R}$ oznacza iloczyn skalarny. Odwzorowanie $u^* \rightarrow u$ jest liniowym izomorfizmem z $H^*$ w $H$.
+\end{Twierdzenie}
+Zauważmy teraz, że dla każdego ustalonego elementu $u \in H$ odwzorowanie $v -\rightarrow B(u,v) $ jest liniowe oraz ograniczone na $H$. Z twierdzenia \ref{TR} wiemy, iż istnieje dokładnie jedno $w \in H$ takie, że
+\begin{equation}
+\nonumber
+B(u,v) = <w,v> \text{ dla } v \in H.
+\end{equation}
+Oznaczmy $Au=w$. Wtedy
+\begin{equation}
+B(u,v) = <Au,v> \text{ dla } u,v \in H.
+\end{equation}
+Z nierówności (\ref{N1}) dostajemy
+\begin{equation}
+\nonumber
+\Vert Au \Vert^2 = <Au,Au> = B(u,Au) \leq \alpha \Vert u \Vert_H \cdot \Vert Au \Vert_H.
+\end{equation}
+Otrzymujemy zatem, że
+\begin{equation}
+\nonumber
+\Vert Au \Vert_H^2 \leq \alpha \Vert u \Vert_H
+\end{equation}
+dla $u \in H$ oraz pewnego $\alpha >0$. Stad $A:H \rightarrow H$ jest ograniczone.
+Ponadto, jeśli $\alpha_1, \alpha_2 \in \mathbb{R}, u_1, u_2 \in H$, to wówczas
+\begin{equation}
+\nonumber
+\begin{split}
+<A(\alpha_1 u_1 +\alpha_2 u_2), v > = B(\alpha_1 u_1 +\alpha_2 u_2, v)  = \alpha_1 B(u_1, v) + \alpha_2 B(u_2,v) \\ = \alpha_1 <Au_1,v> + \alpha_2 <Au_2,v> = <A(\alpha_1 u_1 +\alpha_2 u_2), v >
+\end{split}
+\end{equation}
+dla $v \in H$. Stąd
+\begin{equation}
+\nonumber
+A(\alpha_1 u_1 +\alpha_2 u_2) = A(\alpha_1 u_1 +\alpha_2 u_2).
+\end{equation}
+Zatem $A:H \rightarrow H$ jest liniowe.
+Ponadto,
+\begin{equation}
+\nonumber
+\beta \Vert u \Vert_H^2 \leq B(u,u) \leq <Au,u> \leq \Vert Au \Vert_H \cdot Ver
+ u \Vert_H . 
+\end{equation}
+Zatem
+\begin{equation}
+\nonumber
+\beta \Vert u \Vert_H \leq \Vert Au \Vert_H 
+\end{equation}
+dla pewnego $\beta >0$. Stąd i z ciągłości dostajemy domkniętość obrazu operatora $A$.
+\end{proof}
+Pokażemy teraz, ze operator $A$ działa na cały zbiór $H$. Istotnie, jeśli istnieje $w \in H /setminus \lbrace \theta_H \rbrace$ taki, że $w $ jest elementem dopełnienia ortogonalnego obrazu $A$. Prowadzi to jednak do sprzeczności, gdyż wtedy
+\begin{equation}
+\beta \Vert w \Vert_H^2 \leq B(w,w) \leq <Aw,w> = 0 .
+\end{equation}
+Wnioskujemy zatem, że $A:H \rightarrow H$ jest ciągłą bijekcją. Jeśli $f: H \rightarrow \mathbb{R}$ jest liniowe oraz ograniczone to z twierdzenia \ref{TR} dostajemy istnienie jednoznacznego rozwiązania $u \in H$ dla
+\begin{equation}
+B(u,v) = <Au,v> = <w,v> = f(v),
+\end{equation}
+gdzie $v \in H.$
+
 \end{Lemat}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \section{Zagadnienie Dirichleta}
 W tej części pracy wykażemy istnienie rozwiązania zagadnienia Dirichleta. Jak wcześniej zostało to już zaznaczone, dokonamy tego wykorzystując Lemat Maxa-Milgramma. \\ \\
 \indent
