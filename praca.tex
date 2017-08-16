@@ -16,7 +16,7 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{nameref}
 \usepackage{natbib}
-\linespread{1.5}
+\linespread{1.6}
 
 \makeatletter
 \let\orgdescriptionlabel\descriptionlabel
@@ -75,6 +75,64 @@
 %\includegraphics[width=13cm]
 %\end{figure}
 \begin{document}
+\begin{titlepage}
+\begin{flushleft}
+\end{flushleft}
+\begin{center}
+\textsc{{\huge Politechnika \L\'odzka}}
+\end{center}
+\bigskip
+\bigskip
+\begin{center}
+\textsc{{\Large Wydzia\l\ Fizyki Technicznej, Informatyki i~Matematyki Stosowanej}}
+\end{center}
+\bigskip
+\bigskip
+%\begin{center}
+\begin{Large}
+Kierunek: Matematyka, 
+Studia III stopnia %TU WPISZ SPECJALNOŚĆ% 
+
+\end{Large}
+%\end{center}
+\bigskip
+\bigskip
+\bigskip
+\noindent\hrulefill
+\begin{center}
+\textsc{\textbf{{\Large Analiza funkcjonalna w zastosowaniach %TU WPISZ TYTUŁ PRACY%
+\\}}}
+\end{center}
+\bigskip
+\bigskip
+\begin{flushright}
+{\large 
+Ewa Kulesza %TU WPISZ SWOJE IMIĘ I NAZWISKO%
+\\
+Nr albumu: 
+800963 %TU WPISZ SWÓJ NUMER ALBUMU%
+\\}
+\end{flushright}
+\noindent\hrulefill
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\begin{center}
+{\large  %TU WPISZ RODZAJ PRACY DYPLOMOWEJ: magisterska/licencjacka%
+ Instytut Matematyki Politechniki \L\'odzkiej\\ 
+
+ }
+\end{center}
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\end{titlepage}
+
+
+
 
 \section{Wstęp}
 
@@ -83,10 +141,10 @@ W matematyce często rozważamy problemy następującej postaci
 \label{P1}
 Au = 0,
 \end{equation}
-gdzie $A:X \rightarrow  Y$jest odwzorowaniem pomiędzy przestrzeniami Banacha $X,~Y$. Jeśli problem ma naturę wariacyjną, istnieje funkcjonał $\phi : X \rightarrow \mathbb{R}$, który jest słabą pochodną odwzorowania $A$. Dzięki temu, szukanie rozwiązań problemu (\ref{P1}) sprowadza się często do wyznaczenia kresu dolnego wprowadzonego funkcjonału $\phi$. Przy takich problemach z pomocą często przychodzą takie rezultaty jak twierdzenie o przełęczy górskiej, warunek Palais-Smale czy zasada Edekelanda. Takie podejście może być użyte m.in. przy rozważaniu problemu Dirichleta, w którym występuje operator Laplace'a. Innnym sposobem jest wykazanie istnienie rozwiązań tego problemu wykorzystując lemat Maxa-Milgramma. W kolejnych rozdziałach tej pracy wprowadzimy pojęcie słabej pochodnej oraz jej podstawowe własności i przykłady. Następnie rozważymy problem Dirichleta za pomocą wprowadzonego wcześniej lematu Maxa-Milgramma.
+gdzie $A:X \rightarrow  Y$ jest odwzorowaniem pomiędzy przestrzeniami Banacha $X,~Y$. Jeśli problem ma naturę wariacyjną, istnieje funkcjonał $\phi : X \rightarrow \mathbb{R}$, który jest słabą pochodną odwzorowania $A$. Dzięki temu, szukanie rozwiązań problemu (\ref{P1}) sprowadza się często do wyznaczenia kresu dolnego wprowadzonego funkcjonału $\phi$. Przy takich problemach z pomocą często przychodzą takie rezultaty jak twierdzenie o przełęczy górskiej, warunek Palais-Smale czy zasada Edekelanda. Takie podejście może być użyte m.in. przy rozważaniu problemu Dirichleta, w którym występuje operator Laplace'a. Innnym sposobem jest wykazanie istnienie rozwiązań tego problemu wykorzystując lemat Maxa-Milgramma. W kolejnych rozdziałach tej pracy wprowadzimy pojęcie słabej pochodnej oraz jej podstawowe własności i przykłady. Następnie rozważymy problem Dirichleta za pomocą wprowadzonego wcześniej lematu Maxa-Milgramma.
 \section{Słaba pochodna}
 \begin{Def}
-Niech $u, v \in L^{1}(U)$, gdzie $U \subset \mathbb{R}^{n}$ jest zbiorem otwartym oraz $\alpha = (\alpha_1, ..., \alpha_k)$ będzie multiindeksem oraz $\vert \alpha \vert = \alpha_1 + ... + \alpha_k$, $k \in \mathbb{N}$. Mówimy, że $v$ jest słabą pochodną $u$ oznaczaną przez
+Niech $u, v \in L^{1}(U)$, gdzie $U \subset \mathbb{R}^{n}$ jest zbiorem otwartym oraz $\alpha = (\alpha_1, ..., \alpha_k)$ będzie multiindeksem takim, że $\vert \alpha \vert = \alpha_1 + ... + \alpha_k$, $k \in \mathbb{N}$. Mówimy, że $v$ jest słabą pochodną $u$ rzędu $\alpha$ oznaczaną przez
 \begin{equation}
 D^{\alpha} u =v,
 \end{equation}
@@ -107,7 +165,7 @@ x, & \textrm{for $x \in (0,1]$}\\
 \end{array} \right.
 $ .
 \end{center}
-Sprawdzimy, iż słabą pochodną funkcji $u$ jest następująca funkcja
+Sprawdzimy, iż słabą pochodną $u$ jest następująca funkcja
 \begin{center}
 $
 v (x)  = \left\{ \begin{array}{ll}
@@ -120,16 +178,16 @@ $ .
 Istotnie,
 \begin{equation}
 \nonumber
-\int_0^2 u D\psi dx = \int_0^1 x D\psi dx + \int_1^2 D \psi dx = - \int_0^2 v \psi dx . \\
+\int_0^2 u D\psi dx = \int_0^1 x D\psi dx + \int_1^2 D \psi dx = -\int_0^1 \psi dx = - \int_0^2 v \psi dx . \\
 \end{equation}
 \bigskip
 
 Pojęcie słabej pochodnej umożliwia nam rozważanie rezultatów wynikających m.in. ze wzoru na całkowanie przez części oraz pochodną iloczynu również dla funkcji, które niekoniecznie są $k-$krotnie różniczkowalne oraz wprowadzenie przestrzeni Sobolewa i pewnych własności zdefiniowanej powyżej słabej pochodnej.
 
-\begin{Def} Mówimy, że funkcja $u \in L^{p}(U)$ należy do przestrzeni Sobolewa $W^{k,p}(U)$ jeśli dla każdego multiindeksu $\alpha$ takiego, że $\vert \alpha \vert \leq k$, słaba pochodna $D^{\alpha}u$ istnieje oraz należy do przestrzeni $L^{p}(U)$.
+\begin{Def} (\textbf{Przestrzeń Sobolewa}) \\   Mówimy, że funkcja $u \in L^{p}(U)$ należy do przestrzeni Sobolewa $W^{k,p}(U)$, gdzie $k \in \mathbb{N}$ oraz $U$ jest zbiorem otwartym, jeśli dla każdego multiindeksu $\alpha$ takiego, że $\vert \alpha \vert \leq k$, słaba pochodna $D^{\alpha}u$ istnieje oraz należy do przestrzeni $L^{p}(U)$.
 \end{Def}
 
-\begin{Def} (\textbf{Norma w przestrzeni Sobolewa}) \\  Jeśli $u \in W^{k,p}(U)$, definiujemy normę w przestrzeni Sobolewa następujący sposób
+\begin{Def} (\textbf{Norma w przestrzeni Sobolewa}) \\  Jeśli $u \in W^{k,p}(U)$, definiujemy normę w przestrzeni Sobolewa w następujący sposób
 \begin{center}
 $
 \Vert u \Vert_{W^{k,p}(u)}  = \left\{ \begin{array}{ll}
@@ -227,7 +285,7 @@ oraz
 dla dowolnych $u,v \in H$. Jeśli $f:H \rightarrow \mathbb{R}$ jest liniowym, ograniczonym funkcjonałem, to wówczas istnieje dokładnie jedno $u \in H$ takie, że
 \begin{equation}
 \nonumber
-B(u,v) = f(v()
+B(u,v) = f(v)
 \end{equation}
 dla każdego $v \in H$.
 \begin{proof}
@@ -241,7 +299,7 @@ u^* (v) = <u,v>
 \end{equation}
 dla każdego $v \in H$, gdzie $<\cdot, \cdot >:H \times H \rightarrow \mathbb{R}$ oznacza iloczyn skalarny. Odwzorowanie $u^* \rightarrow u$ jest liniowym izomorfizmem z $H^*$ w $H$.
 \end{Twierdzenie}
-Zauważmy teraz, że dla każdego ustalonego elementu $u \in H$ odwzorowanie $v -\rightarrow B(u,v) $ jest liniowe oraz ograniczone na $H$. Z twierdzenia \ref{TR} wiemy, iż istnieje dokładnie jedno $w \in H$ takie, że
+Zauważmy teraz, że dla każdego ustalonego elementu $u \in H$ odwzorowanie $v \rightarrow B(u,v) $ jest liniowe oraz ograniczone na $H$. Z twierdzenia \ref{TR} wiemy, iż istnieje dokładnie jedno $w \in H$ takie, że
 \begin{equation}
 \nonumber
 B(u,v) = <w,v> \text{ dla } v \in H.
@@ -260,24 +318,25 @@ Otrzymujemy zatem, że
 \nonumber
 \Vert Au \Vert_H^2 \leq \alpha \Vert u \Vert_H
 \end{equation}
-dla $u \in H$ oraz pewnego $\alpha >0$. Stad $A:H \rightarrow H$ jest ograniczone.
+dla $u \in H$ oraz pewnego $\alpha >0$. Stad $A:H \rightarrow H$ jest ograniczone. \\
+\indent
 Ponadto, jeśli $\alpha_1, \alpha_2 \in \mathbb{R}, u_1, u_2 \in H$, to wówczas
 \begin{equation}
 \nonumber
 \begin{split}
-<A(\alpha_1 u_1 +\alpha_2 u_2), v > = B(\alpha_1 u_1 +\alpha_2 u_2, v)  = \alpha_1 B(u_1, v) + \alpha_2 B(u_2,v) \\ = \alpha_1 <Au_1,v> + \alpha_2 <Au_2,v> = <A(\alpha_1 u_1 +\alpha_2 u_2), v >
+<A(\alpha_1 u_1 +\alpha_2 u_2), v > = B(\alpha_1 u_1 +\alpha_2 u_2, v)  = \alpha_1 B(u_1, v) + \alpha_2 B(u_2,v) \\ = \alpha_1 <Au_1,v> + \alpha_2 <Au_2,v> = < \alpha_1 A u_1 +\alpha_2 A u_2, v >
 \end{split}
 \end{equation}
 dla $v \in H$. Stąd
 \begin{equation}
 \nonumber
-A(\alpha_1 u_1 +\alpha_2 u_2) = A(\alpha_1 u_1 +\alpha_2 u_2).
+A(\alpha_1 u_1 +\alpha_2 u_2) = \alpha_1 A u_1 +\alpha_2 A u_2.
 \end{equation}
 Zatem $A:H \rightarrow H$ jest liniowe.
 Ponadto,
 \begin{equation}
 \nonumber
-\beta \Vert u \Vert_H^2 \leq B(u,u) \leq <Au,u> \leq \Vert Au \Vert_H \cdot Ver
+\beta \Vert u \Vert_H^2 \leq B(u,u) \leq <Au,u> \leq \Vert Au \Vert_H \cdot \Vert
  u \Vert_H . 
 \end{equation}
 Zatem
@@ -285,21 +344,21 @@ Zatem
 \nonumber
 \beta \Vert u \Vert_H \leq \Vert Au \Vert_H 
 \end{equation}
-dla pewnego $\beta >0$. Stąd i z ciągłości dostajemy domkniętość obrazu operatora $A$.
-\end{proof}
-Pokażemy teraz, ze operator $A$ działa na cały zbiór $H$. Istotnie, jeśli istnieje $w \in H /setminus \lbrace \theta_H \rbrace$ taki, że $w $ jest elementem dopełnienia ortogonalnego obrazu $A$. Prowadzi to jednak do sprzeczności, gdyż wtedy
+dla pewnego $\beta >0$. Stąd i z ciągłości dostajemy domkniętość obrazu operatora $A$. \\
+\indent
+Pokażemy teraz, ze operator $A$ działa na cały zbiór $H$. Przypuśćmy, że tak nie jest. Istnieje wtedy niezerowy element $w \in H \setminus \lbrace \theta_H \rbrace$ spoza obrazu operatora $A$  taki, że $w $ jest elementem dopełnienia ortogonalnego obrazu $A$. Prowadzi to jednak do sprzeczności, gdyż wtedy
 \begin{equation}
 \beta \Vert w \Vert_H^2 \leq B(w,w) \leq <Aw,w> = 0 .
 \end{equation}
-Wnioskujemy zatem, że $A:H \rightarrow H$ jest ciągłą bijekcją. Jeśli $f: H \rightarrow \mathbb{R}$ jest liniowe oraz ograniczone to z twierdzenia \ref{TR} dostajemy istnienie jednoznacznego rozwiązania $u \in H$ dla
+Wnioskujemy zatem, że $A:H \rightarrow H$ jest ciągłą bijekcją. Jeśli $f: H \rightarrow \mathbb{R}$ jest liniowe oraz ograniczone to z twierdzenia \ref{TR} dostajemy istnienie jednoznacznego rozwiązania $w \in H$ \\ (a zatem jednoznaczne istnienie $u \in H$) dla zagadnienia
 \begin{equation}
-B(u,v) = <Au,v> = <w,v> = f(v),
+f(v)  = <w,v>  = <Au,v> = B(u,v) ,
 \end{equation}
 gdzie $v \in H.$
-
+\end{proof}
 \end{Lemat}
 
-
+\newpage
 
 
 
@@ -335,7 +394,7 @@ Zauważmy, że dla dowolnej funkcji $v \in C^{\infty}_0 (\Omega)$ dostajemy
 Zatem
 \begin{equation}
 \nonumber
-- \int_{\Omega} \sum_{i=1}^n \frac{\partial^2 u}{\partial x_i^2} v dx = \int_{U} f v dx .
+- \int_{\Omega} \sum_{i=1}^n \frac{\partial^2 u}{\partial x_i^2} v dx = \int_{\Omega} f v dx .
 \end{equation}
 Korzystając z definicji słabej pochodnej dostajemy, że 
 \begin{equation}
@@ -350,7 +409,7 @@ Stąd
 \int_{\Omega} \Delta u \Delta v dx = \int_{\Omega} f v dx.
 \end{equation}
 Dodatkowo zakładamy, że $f \in L^{2}(\Omega), \Delta u, \Delta v \in L^{2}(\Omega, R^n).$
-Oznaczmy teraz przez $W^{1,2}_0(\Omega)$ domknięcie zbioru $C^1_c(\Omega) $ w $W^{1,2}(\Omega)$. \\
+Oznaczmy teraz przez $W^{1,2}_0(\Omega)$ domknięcie zbioru $C^1_0(\Omega) $ w $W^{1,2}(\Omega)$. \\
 \indent
 Otrzymujemy wówczas problem znalezienia $u \in W^{1,2}_0(\Omega)$ takiego, że
 \begin{equation}
@@ -368,7 +427,7 @@ oraz $l: W^{1,2}_0(\Omega) \rightarrow \mathbb{R}$
 \nonumber
 l(v) = \int_{\Omega} f v dx .
 \end{equation}
-Zauważmy, iż odwzorowanie $B:W^{1,2}_0(\Omega) \times W^{1,2}_0(\Omega) \rightarrow \mathbb{R} $ jest dwuliniowe oraz (na moce nierówności Höldera i Poincare) spełnia nierówności
+Zauważmy, iż odwzorowanie $B:W^{1,2}_0(\Omega) \times W^{1,2}_0(\Omega) \rightarrow \mathbb{R} $ jest dwuliniowe oraz (na mocy nierówności Höldera i Poincare) spełnia nierówności
 \begin{equation}
 \nonumber
 \vert B(u,v) \vert = \left\vert \int_{\Omega} \Delta u \Delta v dx \right\vert \leq \Vert \Delta u \Vert^2_{L^2(\Omega,R^n)} \cdot \Vert \Delta v \Vert^2_{L^2(\Omega,R^n)} \leq \Vert u \Vert^2_{W^{1,2}_0 (\Omega)} \cdot \Vert v \Vert^2_{W^{1,2}_0 (\Omega)} \cdot 
@@ -376,7 +435,7 @@ Zauważmy, iż odwzorowanie $B:W^{1,2}_0(\Omega) \times W^{1,2}_0(\Omega) \right
 oraz
 \begin{equation}
 \nonumber
-B(u,u) = \int_{\Omega} \vert \Delta u \vert^2 dx = \Vert \Delta u \Vert^2_{L^2(\Omega,R^n)} \geq c \Vert u \Vert_{W^{1,2}_0(\Omega)},
+B(u,u) = \int_{\Omega} \vert \Delta u \vert^2 dx = \Vert \Delta u \Vert^2_{L^2(\Omega,R^n)} \geq c \Vert u \Vert_{W^{1,2}_0(\Omega)}^2,
 \end{equation}
 gdzie $c \in \mathbb{R}$. \\
 Ponadto, $l: W^{1,2}_0(\Omega) \rightarrow \mathbb{R}$ jest liniowe i ciągłe, gdyż
